@@ -88,7 +88,7 @@ public class PasswordTableLabelProvider implements ITableLabelProvider {
 			
 		}
 		if (log.isDebugEnabled())
-			log.debug("Setting column index " + columnIndex + " to [" + columnString + "]");
+			log.debug("Mengatur indeks kolom " + columnIndex + " hingga [" + columnString + "]");
 		return columnString;  // unknown column
 	}
 

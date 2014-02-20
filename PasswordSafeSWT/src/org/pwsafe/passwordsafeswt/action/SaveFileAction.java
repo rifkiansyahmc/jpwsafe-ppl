@@ -39,9 +39,9 @@ public class SaveFileAction extends Action {
             //TODO: more use for status line 
 //            app.setStatusMessage("file saved successfully");
         } catch (IOException e1) {
-            app.displayErrorDialog("Error Saving Safe", e1.getMessage(), e1);
+            app.displayErrorDialog("Gagal Menyimpan Brankas", e1.getMessage(), e1);
         } catch (NoSuchAlgorithmException e) {
-            app.displayErrorDialog("Error Saving Safe", e.getMessage(), e);
+            app.displayErrorDialog("Gagal Menyimpan Brankas", e.getMessage(), e);
 		}
 
     }

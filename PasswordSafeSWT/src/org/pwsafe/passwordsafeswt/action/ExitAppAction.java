@@ -19,7 +19,7 @@ import org.pwsafe.passwordsafeswt.PasswordSafeJFace;
 public class ExitAppAction extends Action {
 
     public ExitAppAction() {
-        super("E&xit");
+        super("Ke&luar");
         setAccelerator( SWT.MOD1 | 'Q'  );
     }
 

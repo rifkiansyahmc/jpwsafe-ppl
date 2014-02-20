@@ -63,7 +63,7 @@ public class PasswordDialog extends Dialog {
 		gridLayout.numColumns = 2;
 		shell.setLayout(gridLayout);
 		shell.setSize(500, 172);
-		shell.setText("Safe Combination Entry");
+		shell.setText("Masukan Kombinasi Brankas");
 
 		final Composite composite_1 = new Composite(shell, SWT.NONE);
 		composite_1.setLayout(new GridLayout());
@@ -76,7 +76,7 @@ public class PasswordDialog extends Dialog {
 		composite.setLayout(new GridLayout());
 
 		final Label lblEnterPassword = new Label(composite, SWT.NONE);
-		lblEnterPassword.setText("Please enter the safe combination for this password database");
+		lblEnterPassword.setText("Mohon masukkan kombinasi brankas untuk database kata kunci berikut");
 
 		lblFilename = new Label(composite, SWT.NONE);
 		lblFilename.setText("..." + File.separator + new File(fileName).getName());
@@ -89,7 +89,7 @@ public class PasswordDialog extends Dialog {
 		composite_2.setLayout(gridLayout_1);
 
 		final Label lblCombination = new Label(composite_2, SWT.NONE);
-		lblCombination.setText("Safe Combination:");
+		lblCombination.setText("Kombinasi Brankas:");
 
 		final Text txtCombination = new Text(composite_2, SWT.BORDER);
 		txtCombination.setEchoChar('*');
@@ -120,11 +120,11 @@ public class PasswordDialog extends Dialog {
 			}
 		});
 		btnCancel.setLayoutData(new GridData(GridData.HORIZONTAL_ALIGN_FILL));
-		btnCancel.setText("Cancel");
+		btnCancel.setText("Batalkan");
 
 		final Button btnHelp = new Button(composite_3, SWT.NONE);
 		btnHelp.setLayoutData(new GridData(GridData.HORIZONTAL_ALIGN_FILL));
-		btnHelp.setText("Help");
+		btnHelp.setText("Bantuan");
 		//
 	}
 	/**

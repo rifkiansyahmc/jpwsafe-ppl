@@ -22,7 +22,7 @@ import org.pwsafe.passwordsafeswt.dialog.PasswordDialog;
 public class ImportFromTextAction extends Action {
 
 	public ImportFromTextAction() {
-		super("Plain Text (tab separated)...");
+		super("Teks murni (dipisahkan Tab)...");
 	}
 	
 	/**

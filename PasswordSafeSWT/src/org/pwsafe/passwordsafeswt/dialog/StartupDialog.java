@@ -41,10 +41,10 @@ public class StartupDialog extends Dialog {
 	private String selectedFile;
 	private String selectedPassword;
 	
-	public static final String OPEN_FILE = "open-selected";  // open the selected file
-	public static final String OPEN_OTHER = "open-other"; // open file dialog for other file
-	public static final String NEW_FILE = "new";    // create a new safe
-	public static final String CANCEL = "cancel";   // exit the app
+	public static final String OPEN_FILE = "buka-dipilih";  // open the selected file
+	public static final String OPEN_OTHER = "buka-lain"; // open file dialog for other file
+	public static final String NEW_FILE = "baru";    // create a new safe
+	public static final String CANCEL = "batalkan";   // exit the app
 	
 	public StartupDialog(Shell parent, int style) {
 		super(parent, style);
@@ -83,7 +83,7 @@ public class StartupDialog extends Dialog {
 		shell.setLayout(new FormLayout());
 		shell.setImage(SWTResourceManager.getImage(StartupDialog.class, "/org/pwsafe/passwordsafeswt/images/clogo.gif"));
 		shell.setSize(550, 368);
-		shell.setText("Safe Combination Entry");
+		shell.setText("Masukan Kombinasi Brankas");
 
 		final Label lblTextLogo = new Label(shell, SWT.NONE);
 		lblTextLogo.setAlignment(SWT.CENTER);
@@ -99,7 +99,7 @@ public class StartupDialog extends Dialog {
 		formData.top = new FormAttachment(lblTextLogo, 15);
 		formData.left = new FormAttachment(0, 55);
 		lblPleaseEnter.setLayoutData(formData);
-		lblPleaseEnter.setText("Please enter the safe combination for the password database:");
+		lblPleaseEnter.setText("Mohon masukkan kombinasi brankas untuk database kata kunci:");
 
 		final Label lblFilename = new Label(shell, SWT.NONE);
 		lblFilename.setText("&Filename:");
@@ -120,7 +120,7 @@ public class StartupDialog extends Dialog {
 		formData_2.top = new FormAttachment(lblFilename, 20);
 		formData_2.right = new FormAttachment(lblFilename, 0, SWT.RIGHT);
 		lblSafeCombination.setLayoutData(formData_2);
-		lblSafeCombination.setText("&Safe Combination:");
+		lblSafeCombination.setText("&Kombinasi Brankas:");
 
 		txtPassword = new Text(shell, SWT.BORDER);
 		txtPassword.setEchoChar('*');
@@ -135,7 +135,7 @@ public class StartupDialog extends Dialog {
 		formData_4.top = new FormAttachment(txtPassword, 15);
 		formData_4.left = new FormAttachment(txtPassword, 0, SWT.LEFT);
 		btnReadOnly.setLayoutData(formData_4);
-		btnReadOnly.setText("Open as &read-only");
+		btnReadOnly.setText("Buka sebagai &read-only");
 
 		final Button btnCreate = new Button(shell, SWT.NONE);
 		btnCreate.addSelectionListener(new SelectionAdapter() {
@@ -148,7 +148,7 @@ public class StartupDialog extends Dialog {
         formData_5.top = new FormAttachment(cboFilename, 0, SWT.TOP);
 		formData_5.right = new FormAttachment(100, -5);
 		btnCreate.setLayoutData(formData_5);
-		btnCreate.setText("&Create new safe...  ");
+		btnCreate.setText("&Ciptakan brankas baru...  ");
 
 		final Button btnOpen = new Button(shell, SWT.NONE);
 		btnOpen.addSelectionListener(new SelectionAdapter() {
@@ -164,7 +164,7 @@ public class StartupDialog extends Dialog {
 		formData_6.left = new FormAttachment(btnCreate, 0, SWT.LEFT);
         formData_6.right = new FormAttachment(btnCreate, 0, SWT.RIGHT);
 		btnOpen.setLayoutData(formData_6);
-		btnOpen.setText("&Open other safe...");
+		btnOpen.setText("&Buka brankas lain...");
 
 		final Button btnOk = new Button(shell, SWT.NONE);
 		shell.setDefaultButton(btnOk);
@@ -195,7 +195,7 @@ public class StartupDialog extends Dialog {
 		formData_8.left = new FormAttachment(btnOk, 10);
 		formData_8.top = new FormAttachment(btnOk, 0, SWT.TOP);
 		btnCancel.setLayoutData(formData_8);
-		btnCancel.setText("Cancel");
+		btnCancel.setText("Batalkan");
 
 		final Button btnHelp = new Button(shell, SWT.NONE);
 		final FormData formData_9 = new FormData();
@@ -203,7 +203,7 @@ public class StartupDialog extends Dialog {
 		formData_9.top = new FormAttachment(btnCancel, 0, SWT.TOP);		
 		formData_9.left = new FormAttachment(btnCancel, 10);
 		btnHelp.setLayoutData(formData_9);
-		btnHelp.setText("Help");
+		btnHelp.setText("Bantuan");
 		btnHelp.setEnabled(false);    // there is no help yet
 
 		final Label lblVersion = new Label(shell, SWT.NONE);
@@ -211,7 +211,7 @@ public class StartupDialog extends Dialog {
 		formData_11.top = new FormAttachment(btnReadOnly, 0, SWT.TOP);
 		formData_11.left = new FormAttachment(btnOpen, 0, SWT.LEFT);
 		lblVersion.setLayoutData(formData_11);
-		lblVersion.setText("Version: " + VersionInfo.getVersion());
+		lblVersion.setText("Versi: " + VersionInfo.getVersion());
 	}
 	
 	/**

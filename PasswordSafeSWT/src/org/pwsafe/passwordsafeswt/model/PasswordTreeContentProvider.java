@@ -123,12 +123,12 @@ public class PasswordTreeContentProvider implements ITreeContentProvider {
 				}
 				
                 if (stringParent.equalsIgnoreCase(recGroup)) {
-                    log.debug("Adding record");
+                    log.debug("Menambah catatan");
                     matchingRecs.add(nextRecord);
                 }
                 else if (recGroup.length() > stringParent.length()
                         && stringParent.regionMatches(true, 0, recGroup, 0, stringParent.length())) {
-                    log.debug("Adding group");
+                    log.debug("Menambah grup");
                     int nextDot = recGroup.indexOf('.', stringParent.length() + 1);
                     int endOfGroup = nextDot > 0 ? nextDot : recGroup.length();
                     String subGroup = recGroup.substring(0, endOfGroup);

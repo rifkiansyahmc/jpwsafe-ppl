@@ -23,7 +23,7 @@ import org.pwsafe.passwordsafeswt.dto.PwsEntryDTO;
 public class EditRecordAction extends Action {
 
     public EditRecordAction() {
-        super("&Edit Record");
+        super("&Ubah Catatan");
         setAccelerator( SWT.MOD1 | Character.LINE_SEPARATOR  );
         setImageDescriptor(ImageDescriptor.createFromURL(this.getClass().getClassLoader().getResource("org/pwsafe/passwordsafeswt/images/tool_newbar_edit.gif")));
         setToolTipText("Ubah Catatan Dipilih");

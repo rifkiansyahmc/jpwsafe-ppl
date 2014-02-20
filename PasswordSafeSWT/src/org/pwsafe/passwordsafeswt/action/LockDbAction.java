@@ -55,7 +55,7 @@ public class LockDbAction extends Action {
     protected void performLock () {
 	    PasswordSafeJFace app = PasswordSafeJFace.getApp();
 	    if (app.getPwsFile() != null) {
-		    log.debug("locking database... ");
+		    log.debug("mengunci database... ");
 		    app.setPassphrase(null);
 		    app.clearView();
 		    app.setPwsFile(null);

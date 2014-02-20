@@ -115,7 +115,7 @@ public class EditDialog extends Dialog {
 	protected void createContents() {
 		shell = new Shell(getParent(), SWT.RESIZE | SWT.DIALOG_TRIM | SWT.APPLICATION_MODAL);
 		shell.setSize(590, 603);
-		shell.setText("Edit/View Entry");
+		shell.setText("Ubah/Lihat Entri");
 		final GridLayout gridLayout_2 = new GridLayout();
 		gridLayout_2.marginWidth = 10;
 		gridLayout_2.marginHeight = 10;
@@ -161,7 +161,7 @@ public class EditDialog extends Dialog {
 		formData.top = new FormAttachment(0, 10);
 		formData.left = new FormAttachment(0, 17);
 		lblGroup.setLayoutData(formData);
-		lblGroup.setText("Group:");
+		lblGroup.setText("Grup:");
 
 		txtGroup = new Text(compositeFields, SWT.BORDER);
 		txtGroup.addKeyListener(dirtyKeypress);
@@ -178,7 +178,7 @@ public class EditDialog extends Dialog {
 		formData_2.top = new FormAttachment(txtGroup, 10, SWT.BOTTOM);
 		formData_2.left = new FormAttachment(lblGroup, 0, SWT.LEFT);
 		lblTitle.setLayoutData(formData_2);
-		lblTitle.setText("Title:");
+		lblTitle.setText("Judul:");
 
 		txtTitle = new Text(compositeFields, SWT.BORDER);
 		final FormData formData_3 = new FormData();
@@ -195,7 +195,7 @@ public class EditDialog extends Dialog {
 		formData_4.top = new FormAttachment(txtTitle, 10, SWT.BOTTOM);
 		formData_4.left = new FormAttachment(lblTitle, 0, SWT.LEFT);
 		lblUsername.setLayoutData(formData_4);
-		lblUsername.setText("Username:");
+		lblUsername.setText("Nama Pengguna:");
 
 		txtUsername = new Text(compositeFields, SWT.BORDER);
 		final FormData formData_5 = new FormData();
@@ -212,7 +212,7 @@ public class EditDialog extends Dialog {
 		formData_6.top = new FormAttachment(txtUsername, 10, SWT.BOTTOM);
 		formData_6.left = new FormAttachment(lblUsername, 0, SWT.LEFT);
 		lblPassword.setLayoutData(formData_6);
-		lblPassword.setText("Password:");
+		lblPassword.setText("Kata Kunci:");
 
 		txtPassword = new Text(compositeFields, SWT.BORDER);
 		final FormData formData_7 = new FormData();
@@ -233,9 +233,9 @@ public class EditDialog extends Dialog {
 			public void widgetSelected(SelectionEvent e) {
                 if (txtPassword.getEchoChar() != '\0') {
                 	txtPassword.setEchoChar('\0');
-                	btnShowPassword.setText("Hide Password");
+                	btnShowPassword.setText("Sembunyikan Kata Kunci");
                 } else {
-                	btnShowPassword.setText("Show Password");
+                	btnShowPassword.setText("Tunjukkan Kata Kunci");
                 	txtPassword.setEchoChar('*');
                 }
 			}
@@ -246,9 +246,9 @@ public class EditDialog extends Dialog {
 		formData_8.right = new FormAttachment(70, 0);
 		btnShowPassword.setLayoutData(formData_8);
 		if (UserPreferences.getInstance().getBoolean(DisplayPreferences.SHOW_PASSWORD_IN_EDIT_MODE)) {
-			btnShowPassword.setText("Hide Password");
+			btnShowPassword.setText("Sembunyikan Kata Kunci");
 		} else {
-			btnShowPassword.setText("Show Password");
+			btnShowPassword.setText("Tunjukkan Kata Kunci");
 		}
 		
 		final Label lblNotes = new Label(compositeFields, SWT.NONE);
@@ -256,7 +256,7 @@ public class EditDialog extends Dialog {
 		formData_9.top = new FormAttachment(txtPassword, 5, SWT.BOTTOM);
 		formData_9.left = new FormAttachment(lblPassword, 0, SWT.LEFT);
 		lblNotes.setLayoutData(formData_9);
-		lblNotes.setText("Notes:");
+		lblNotes.setText("Catatan:");
 
 		txtNotes = new Text(compositeFields, SWT.V_SCROLL | SWT.MULTI | SWT.BORDER | SWT.WRAP);
 		final FormData formData_10 = new FormData(SWT.DEFAULT, 100);
@@ -293,7 +293,7 @@ public class EditDialog extends Dialog {
 		formDataTemp.top = new FormAttachment(txtUrl, 10, SWT.BOTTOM);
 		formDataTemp.left = new FormAttachment(lblUrl, 0, SWT.LEFT);
 		lblAutotype.setLayoutData(formDataTemp);
-		lblAutotype.setText("Autotype:");
+		lblAutotype.setText("Otoketik:");
 
 		txtAutotype = new Text(compositeFields, SWT.BORDER);
 		formDataTemp = new FormData();
@@ -311,7 +311,7 @@ public class EditDialog extends Dialog {
 		fd_lblPasswordExpire.top = new FormAttachment(txtAutotype, 10, SWT.BOTTOM);
 		fd_lblPasswordExpire.left = new FormAttachment(lblAutotype, 0, SWT.LEFT);
 		lblPasswordExpire.setLayoutData(fd_lblPasswordExpire);
-		lblPasswordExpire.setText("Password expires:");
+		lblPasswordExpire.setText("Tanggal Kata Kunci berakhir:");
 
 		txtPasswordExpire = new Text(compositeFields, SWT.BORDER);
 		final FormData fd_txtPasswordExpire = new FormData();
@@ -431,7 +431,7 @@ public class EditDialog extends Dialog {
 		formData_12.left = new FormAttachment(btnOk, 0, SWT.LEFT);
 		formData_12.right = new FormAttachment(btnOk, 0, SWT.RIGHT);
 		btnCancel.setLayoutData(formData_12);
-		btnCancel.setText("Cancel");
+		btnCancel.setText("Batalkan");
 
 		final Button btnHelp = new Button(compositeFields, SWT.NONE);
 		final FormData formData_13 = new FormData();
@@ -443,7 +443,7 @@ public class EditDialog extends Dialog {
 
 		final Group group = new Group(compositeFields, SWT.NONE);
 		group.setLayout(new GridLayout());
-		group.setText("Random Password");
+		group.setText("Kata Kunci Acak");
 		final FormData formData_14 = new FormData();
 //		formData_14.left = new FormAttachment(txtNotes, 10, SWT.RIGHT);
 		formData_14.left = new FormAttachment(100, -160);
@@ -459,10 +459,10 @@ public class EditDialog extends Dialog {
 			}
 		});
 		btnGenerate.setLayoutData(new GridData(GridData.HORIZONTAL_ALIGN_FILL));
-		btnGenerate.setText("Generate");
+		btnGenerate.setText("Ciptakan");
 
 		final Button chkOverride = new Button(group, SWT.CHECK);
-		chkOverride.setText("Override Policy");
+		chkOverride.setText("Override Kebijakan");
 		chkOverride.setEnabled(false); //TODO: Open policy dialog and generate a password with it on exit
 		
 		return btnOk;
@@ -485,25 +485,25 @@ public class EditDialog extends Dialog {
 
 
 		final CLabel createdLbl = new CLabel(timesGroup, SWT.NONE);
-		createdLbl.setText("Created");
+		createdLbl.setText("Diciptakan");
 
 		createTime = new CLabel(timesGroup, SWT.NONE);			
 		createTime.setText(format(entryToEdit.getCreated()));
 
 		final CLabel lastAccessLbl = new CLabel(timesGroup, SWT.NONE);
-		lastAccessLbl.setText("Last Access");
+		lastAccessLbl.setText("Akses Terakhir");
 
 		lastAccess = new CLabel(timesGroup, SWT.NONE);
 		lastAccess.setText(format(entryToEdit.getLastAccess()));
 
 		final CLabel changedLbl = new CLabel(timesGroup, SWT.NONE);
-		changedLbl.setText("Changed");
+		changedLbl.setText("Diganti");
 
 		changed = new CLabel(timesGroup, SWT.NONE);
 		changed.setText(format(entryToEdit.getLastChange()));
 
 		final CLabel passwordChangeLbl = new CLabel(timesGroup, SWT.NONE);
-		passwordChangeLbl.setText("Password Change");
+		passwordChangeLbl.setText("Ubah Pasword");
 
 		passwordChange = new CLabel(timesGroup, SWT.NONE);
 		passwordChange.setText(format(entryToEdit.getLastPwChange()));
@@ -572,7 +572,7 @@ public class EditDialog extends Dialog {
 				sb.append(pwSet.charAt(randOffset));
 			}
 		} else {
-			sb.append("Must Edit Password Generation Options");
+			sb.append("Harus Mengubah Opsi Menciptakan Kata Kunci");
 		}
 
 		return sb.toString();

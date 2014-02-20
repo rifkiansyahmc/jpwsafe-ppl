@@ -23,7 +23,7 @@ import org.pwsafe.passwordsafeswt.dto.PwsEntryDTO;
 public class DeleteRecordAction extends Action {
 
     public DeleteRecordAction() {
-        super("&Delete Record@Del");
+        super("&Hapus Catatan@Del");
         setImageDescriptor(ImageDescriptor.createFromURL(this.getClass().getClassLoader().getResource("org/pwsafe/passwordsafeswt/images/tool_newbar_delete.gif")));
         setToolTipText("Hapus Catatan Dipilih");
     }
@@ -36,9 +36,9 @@ public class DeleteRecordAction extends Action {
         PwsRecord selectedRec = app.getSelectedRecord();
         if (selectedRec != null) {
             MessageBox mb = new MessageBox(app.getShell(), SWT.ICON_QUESTION | SWT.YES | SWT.NO);
-            mb.setText("Delete Record");
+            mb.setText("Hapus Catatan");
             PwsEntryDTO entry = PwsEntryDTO.fromPwsRecord(selectedRec);
-            mb.setMessage("Are you sure you want to delete record " + entry.getTitle() + " ?");
+            mb.setMessage("Apa anda yakin akan menghapus catatan " + entry.getTitle() + " ?");
             int result = mb.open();
             if (result == SWT.YES) {
                 app.deleteRecord();

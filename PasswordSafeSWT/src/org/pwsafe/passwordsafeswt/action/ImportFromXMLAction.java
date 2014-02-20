@@ -37,7 +37,7 @@ public class ImportFromXMLAction extends Action {
 				try {
 					app.importFromXML(fileName);
 				} catch (Exception e) {
-					app.displayErrorDialog("Error Importing XML", "Invalid Source File", e);
+					app.displayErrorDialog("Gagal Mengimpor XML", "File Sumber Invalid", e);
 				}
 
 			

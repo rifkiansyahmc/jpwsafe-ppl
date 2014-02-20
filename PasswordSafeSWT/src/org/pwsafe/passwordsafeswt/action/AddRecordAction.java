@@ -24,7 +24,7 @@ import org.pwsafe.passwordsafeswt.util.UserPreferences;
 public class AddRecordAction extends Action {
 
     public AddRecordAction() {
-        super("&Add Record");
+        super("&Tambah Catatan");
         setAccelerator( SWT.MOD1 | 'A' );
         setImageDescriptor(ImageDescriptor.createFromURL(this.getClass().getClassLoader().getResource("org/pwsafe/passwordsafeswt/images/tool_newbar_add.gif")));
         setToolTipText("Tambahkan Catatan Baru");

@@ -57,10 +57,10 @@ public class AboutDialog extends Dialog {
 		shell = new Shell(getParent(), SWT.DIALOG_TRIM | SWT.APPLICATION_MODAL);
 		shell.setLayout(new GridLayout());
 		shell.setSize(401, 264);
-		shell.setText("About PasswordSafe");
+		shell.setText("Mengenai PasswordSafe");
 
 		final Group group = new Group(shell, SWT.NONE);
-		group.setText("About");
+		group.setText("Mengenai");
 		group.setLayoutData(new GridData(GridData.FILL_BOTH));
 		group.setLayout(new GridLayout());
 
@@ -73,11 +73,12 @@ public class AboutDialog extends Dialog {
 		lblAuthor.setAlignment(SWT.CENTER);
 		lblAuthor.setLayoutData(new GridData(GridData.HORIZONTAL_ALIGN_FILL));
 		lblAuthor.setText("(c) 2008 by Glen Smith & others");
+		lblAuthor.setText("Dimodifikasi 2104 oleh Dyah Rahmawati & kawan-kawan");
 
 		final Label lblVersion = new Label(group, SWT.NONE);
 		lblVersion.setAlignment(SWT.CENTER);
 		lblVersion.setLayoutData(new GridData(GridData.FILL_HORIZONTAL | GridData.VERTICAL_ALIGN_END));
-		lblVersion.setText("Version: " + VersionInfo.getVersion());
+		lblVersion.setText("Versi: " + VersionInfo.getVersion());
 
 		final Label lblWebsite = new Label(group, SWT.CENTER);
 		lblWebsite.addMouseListener(new MouseAdapter() {
@@ -87,7 +88,7 @@ public class AboutDialog extends Dialog {
 		});
 		lblWebsite.setForeground(Display.getCurrent().getSystemColor(SWT.COLOR_BLUE));
 		lblWebsite.setLayoutData(new GridData(GridData.HORIZONTAL_ALIGN_FILL));
-		lblWebsite.setText("Visit PasswordSafeSWT Website");
+		lblWebsite.setText("Kunjungi website PasswordSafeSWT");
 
 		final Composite composite = new Composite(shell, SWT.NONE);
 		composite.setLayoutData(new GridData(GridData.HORIZONTAL_ALIGN_END));

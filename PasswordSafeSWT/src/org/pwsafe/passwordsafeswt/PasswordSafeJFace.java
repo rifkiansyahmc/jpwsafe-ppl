@@ -206,7 +206,7 @@ public class PasswordSafeJFace extends ApplicationWindow {
 					openFile(sd.getFilename(), sd.getPassword());
 					allDone = true;
 				} catch (Exception e) {
-					displayErrorDialog("Error Opening File", "Invalid Password or File Error", e);
+					displayErrorDialog("Error Dalam Membuka File", "Kata Kunci Salah atau File Error", e);
 					allDone = false;
 				}
 			} else if (result == StartupDialog.NEW_FILE) {
@@ -255,10 +255,10 @@ public class PasswordSafeJFace extends ApplicationWindow {
 		final Tray tray = getShell().getDisplay().getSystemTray();
 		if (tray == null) {
 			if (log.isInfoEnabled())
-				log.info("The system tray is not available");
+				log.info("Sistem Tray tidak tersedia");
 		} else {
 			if (log.isDebugEnabled())
-				log.debug("Setting up System Tray");
+				log.debug("Mengatur System Tray");
 
 			trayItem = new TrayItem(tray, SWT.NONE);
 			trayItem.setToolTipText(PasswordSafeJFace.APP_NAME);
@@ -271,7 +271,7 @@ public class PasswordSafeJFace extends ApplicationWindow {
 			});
 			final Menu menu = new Menu(getShell(), SWT.POP_UP);
 			MenuItem trayRestore = new MenuItem(menu, SWT.PUSH);
-			trayRestore.setText("Restore");
+			trayRestore.setText("Kembalikan");
 			trayRestore.addSelectionListener(new SelectionAdapter() {
 				public void widgetSelected(SelectionEvent arg0) {
 					getShell().setVisible(true);
@@ -280,7 +280,7 @@ public class PasswordSafeJFace extends ApplicationWindow {
 			});
 			new MenuItem(menu, SWT.SEPARATOR);
 			MenuItem trayExit = new MenuItem(menu, SWT.PUSH);
-			trayExit.setText("Exit");
+			trayExit.setText("Keluar");
 			trayExit.addSelectionListener(new SelectionAdapter() {
 				public void widgetSelected(SelectionEvent arg0) {
 					new ExitAppAction().run();
@@ -478,13 +478,13 @@ public class PasswordSafeJFace extends ApplicationWindow {
 		menuManagerFile.add(saveFileAsAction);
 		menuManagerFile.add(new Separator());
 
-		final MenuManager menuManagerExportTo = new MenuManager("Export To");
+		final MenuManager menuManagerExportTo = new MenuManager("Export Ke");
 		menuManagerFile.add(menuManagerExportTo);
 
 		menuManagerExportTo.add(exportToTextAction);
 		menuManagerExportTo.add(exportToXMLAction);
 
-		final MenuManager menuManagerImportFrom = new MenuManager("Import From");
+		final MenuManager menuManagerImportFrom = new MenuManager("Import Dari");
 		menuManagerFile.add(menuManagerImportFrom);
 
 		menuManagerImportFrom.add(importFromTextAction);
@@ -504,20 +504,20 @@ public class PasswordSafeJFace extends ApplicationWindow {
 		menuManagerEdit.add(copyUsernameAction);
 		menuManagerEdit.add(clearClipboardAction);
 
-		final MenuManager menuManagerView = new MenuManager("View");
+		final MenuManager menuManagerView = new MenuManager("Lihat");
 		result.add(menuManagerView);
 
 		menuManagerView.add(viewAsListAction);
 		menuManagerView.add(viewAsTreeAction);
 
-		final MenuManager menuManagerManage = new MenuManager("Manage");
+		final MenuManager menuManagerManage = new MenuManager("Atur");
 		result.add(menuManagerManage);
 
 		menuManagerManage.add(changeSafeCombinationAction);
 		menuManagerManage.add(new Separator());
 		menuManagerManage.add(optionsAction);
 
-		final MenuManager menuManagerHelp = new MenuManager("Help");
+		final MenuManager menuManagerHelp = new MenuManager("Bantuan");
 		result.add(menuManagerHelp);
 
 		menuManagerHelp.add(helpAction);
@@ -538,7 +538,7 @@ public class PasswordSafeJFace extends ApplicationWindow {
 	 */
 	protected Menu createPopupMenu(Control ctl) {
 
-		final MenuManager menuListPopup = new MenuManager("ListPopup");
+		final MenuManager menuListPopup = new MenuManager("DaftarPopup");
 
 		menuListPopup.createContextMenu(ctl);
 
@@ -598,9 +598,9 @@ public class PasswordSafeJFace extends ApplicationWindow {
 		final PwsFile pwsf = getPwsFile();
         if (pwsf != null && pwsf.getRecordCount() > 0) {
 			if (UserPreferences.getInstance().getBoolean(MiscPreferences.DOUBLE_CLICK_COPIES_TO_CLIPBOARD)) {
-				setStatusMessage("Double Click on entry to copy password");
+				setStatusMessage("Double Click ketika masuk untuk copy password");
 			} else {
-				setStatusMessage("Double Click to edit entry");
+				setStatusMessage("Double Click untuk mengedit entry");
 			}
 		} else {
 			setStatusMessage("http://jpwsafe.sf.net");
@@ -615,7 +615,7 @@ public class PasswordSafeJFace extends ApplicationWindow {
 	 *            commandline args that are passed in
 	 */
 	public static void main(String args[]) {
-		log.info("PasswordSafe starting...");
+		log.info("PasswordSafe dimulai...");
 		log.info("java.library.path is: [" + System.getProperty("java.library.path") + "]");
 		log.info("log: " + log.getClass().getName());
 		try {
@@ -625,9 +625,9 @@ public class PasswordSafeJFace extends ApplicationWindow {
 			SWTResourceManager.dispose();
 			Display.getCurrent().dispose();
 		} catch (Exception e) {
-			log.error("Error Starting PasswordSafe", e);
+			log.error("Error Dalam Memulai PasswordSafe", e);
 		}
-		log.info("PasswordSafe terminating...");
+		log.info("PasswordSafe ditutup...");
 	}
 
 	/**
@@ -744,7 +744,7 @@ public class PasswordSafeJFace extends ApplicationWindow {
 			 			
 			if (valueToCopy != null) {
 				cb.setContents(new Object[]{valueToCopy}, new Transfer[]{TextTransfer.getInstance()});
-				log.debug("Copied to clipboard");
+				log.debug("Dicopy ke clipboard");
 			}
 		}
 
@@ -783,7 +783,7 @@ public class PasswordSafeJFace extends ApplicationWindow {
 	public void editRecord(PwsEntryDTO newEntry) {
 		PwsRecord selectedRecord = getSelectedRecord();
 		if (log.isDebugEnabled())
-			log.debug("Dialog has been edited, updating safe");
+			log.debug("Dialog telah diedit, memperbaharui brankas");
 		newEntry.toPwsRecord(selectedRecord);
 		updateViewers();
 	}
@@ -793,14 +793,14 @@ public class PasswordSafeJFace extends ApplicationWindow {
 	 */
 	public void addRecord(PwsEntryDTO newEntry) {
 		if (log.isDebugEnabled())
-			log.debug("Dialog has created new record, updating safe");
+			log.debug("Dialog telah menciptakan catatan baru, memperbaharui brankas");
 		PwsRecord newRecord = getPwsFile().newRecord();
 		newEntry.toPwsRecord(newRecord);
 		try {
 			getPwsFile().add(newRecord);
 			saveOnUpdateOrEditCheck();
 		} catch (PasswordSafeException e) {
-			displayErrorDialog("Add Entry Error", "Error Adding Entry", e);
+			displayErrorDialog("Penambahan Entry Error", "Error Menambahkan Entry", e);
 		}
 		updateViewers();
 
@@ -814,7 +814,7 @@ public class PasswordSafeJFace extends ApplicationWindow {
 	private void saveOnUpdateOrEditCheck() {
 		if (UserPreferences.getInstance().getBoolean(MiscPreferences.SAVE_IMMEDIATELY_ON_EDIT)) {
 			if (log.isDebugEnabled())
-				log.debug("Save on Edit option active. Saving database.");
+				log.debug("Opsi Save ketika Edit aktif. Menyimpan database.");
 			saveFileAction.run();
 		}
 	}
@@ -829,7 +829,7 @@ public class PasswordSafeJFace extends ApplicationWindow {
         if (isDirty()) {
             int style = SWT.APPLICATION_MODAL | SWT.YES | SWT.NO | SWT.CANCEL;
             MessageBox messageBox = new MessageBox(getShell(), style);
-            messageBox.setText("Save Changes");
+            messageBox.setText("Simpan Perubahan");
             messageBox
                     .setMessage("Apakah anda ingin menyimpan perubahan pada daftar kata kunci?");
             int result = messageBox.open();
@@ -837,10 +837,10 @@ public class PasswordSafeJFace extends ApplicationWindow {
                 try {
                     saveFile();
                 } catch (IOException e1) {
-                    displayErrorDialog("Error Saving Safe", e1.getMessage(), e1);
+                    displayErrorDialog("Error Dalam Menyimpan Brankas", e1.getMessage(), e1);
                     cancelled = true;
                 } catch (NoSuchAlgorithmException e) {
-                    displayErrorDialog("Error Saving Safe", e.getMessage(), e);
+                    displayErrorDialog("Error Dalam Menyimpan Brankas", e.getMessage(), e);
                     cancelled = true;
 				}
             } else if (result == SWT.CANCEL) {
@@ -926,7 +926,7 @@ public class PasswordSafeJFace extends ApplicationWindow {
 		try {
 			UserPreferences.getInstance().savePreferences();
 		} catch (IOException e) {
-			displayErrorDialog("Error Saving User Preferences", "Error encountered saving your user preferences: " + e.getMessage(), e);
+			displayErrorDialog("Error Menyimpan Preferensi Pengguna", "Error ditemukan ketika menyimpan preferensi pengguna: " + e.getMessage(), e);
 		}
 	}
 	
@@ -1046,13 +1046,13 @@ public class PasswordSafeJFace extends ApplicationWindow {
 				
 			}
 		} catch (IOException ioe) {
-			displayErrorDialog("Error Exporting", "Error writing to text file", ioe);
+			displayErrorDialog("Error Mengekspor", "Error ketika menulis kedalam file teks", ioe);
 		} finally {
 			if (fw != null) {
 				try {
 					fw.close();
 				} catch (IOException e) {
-					log.warn("Could not close output text file", e);
+					log.warn("Tidak dapat menutup file teks keluaran", e);
 				}
 			}
 
@@ -1099,7 +1099,7 @@ public class PasswordSafeJFace extends ApplicationWindow {
 				try {
 					fileReader.close();
 				} catch (IOException e) {
-					log.warn("Could not close import text file", e);
+					log.warn("Tidak dapat menutup file teks impor", e);
 				}
 			}
 		}
@@ -1128,7 +1128,7 @@ public class PasswordSafeJFace extends ApplicationWindow {
 		try {
 			bis = new BufferedInputStream(new FileInputStream(filename));
 		} catch (FileNotFoundException e) {
-			throw new RuntimeException("Could not open file", e);
+			throw new RuntimeException("Tidak dapat membuka file", e);
 		}
 
 		String utf8String;
@@ -1147,7 +1147,7 @@ public class PasswordSafeJFace extends ApplicationWindow {
 	        }
 	        	
 		} catch (Exception ioe) {
-			throw new RuntimeException("IO Issues reading XML source file", ioe);
+			throw new RuntimeException("Masalah I/O membaca file sumber XML", ioe);
 		} finally
         {
 		    IOUtils.closeQuietly(bis);
@@ -1256,7 +1256,7 @@ public class PasswordSafeJFace extends ApplicationWindow {
 					lockTask = null;
 				}
 				if (locked) {
-					log.info("trying to unlock");
+					log.info("mencoba membuka");
 			        PasswordDialog pd = new PasswordDialog(app.getShell());
 			        String fileName = thePrefs.getMRUFile();
 			        pd.setFileName(fileName);
@@ -1265,7 +1265,7 @@ public class PasswordSafeJFace extends ApplicationWindow {
 			            try {
 			                app.openFile(fileName, password);
 			            } catch (Exception anEx) {
-			                app.displayErrorDialog("Error Opening Safe", "Invalid Passphrase", anEx);
+			                app.displayErrorDialog("Gagal Membuka Brankas", "Kata Kunci Salah", anEx);
 			            }
 					}
 			        app.setLocked(false);
@@ -1297,7 +1297,7 @@ public class PasswordSafeJFace extends ApplicationWindow {
 				}
 				if (locked) {
 					app.setLocked(false);
-					log.info("trying to unlock");
+					log.info("tmencoba membuka");
 			        PasswordDialog pd = new PasswordDialog(app.getShell());
 			        String fileName = UserPreferences.getInstance().getMRUFile();
 			        pd.setFileName(fileName);
@@ -1306,7 +1306,7 @@ public class PasswordSafeJFace extends ApplicationWindow {
 			            try {
 			                app.openFile(fileName, password);
 			            } catch (Exception anEx) {
-			                app.displayErrorDialog("Error Opening Safe", "Invalid Passphrase", anEx);
+			                app.displayErrorDialog("Gagal Membuka Brankas", "Kata Kunci Salah", anEx);
 			            }
 					}
 			        
