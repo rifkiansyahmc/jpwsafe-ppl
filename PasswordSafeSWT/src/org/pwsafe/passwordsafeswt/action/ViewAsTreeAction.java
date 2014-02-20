@@ -18,7 +18,7 @@ import org.pwsafe.passwordsafeswt.PasswordSafeJFace;
 public class ViewAsTreeAction extends Action {
 
     public ViewAsTreeAction() {
-        super("Tree", AS_RADIO_BUTTON);
+        super("Pohon", AS_RADIO_BUTTON);
     }
 
     /**

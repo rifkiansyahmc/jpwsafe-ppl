@@ -330,26 +330,26 @@ public class PasswordSafeJFace extends ApplicationWindow {
 
 		final TableColumn tableColumn = new TableColumn(table, SWT.NONE);
 		tableColumn.setWidth(100);
-		tableColumn.setText("Title");
+		tableColumn.setText("Judul");
 		tableColumn.addSelectionListener(new TableColumnSelectionAdaptor(tableViewer, 1));
 		WidgetPreferences.tuneTableColumn(tableColumn, getClass(), "table/title");
 
 		final TableColumn tableColumn_1 = new TableColumn(table, SWT.NONE);
 		tableColumn_1.setWidth(100);
-		tableColumn_1.setText("User Name");
+		tableColumn_1.setText("Nama Pengguna");
 		tableColumn_1.addSelectionListener(new TableColumnSelectionAdaptor(tableViewer, 2));
         WidgetPreferences.tuneTableColumn(tableColumn_1, getClass(), "table/userName");
 
 		final TableColumn tableColumn_2 = new TableColumn(table, SWT.NONE);
 		tableColumn_2.setWidth(100);
-		tableColumn_2.setText("Notes");
+		tableColumn_2.setText("Catatan");
 		tableColumn_2.addSelectionListener(new TableColumnSelectionAdaptor(tableViewer, 3));
         WidgetPreferences.tuneTableColumn(tableColumn_2, getClass(), "table/notes");
 
 		if (UserPreferences.getInstance().getBoolean(DisplayPreferences.SHOW_PASSWORD_IN_LIST)) {
 			final TableColumn tableColumn_3 = new TableColumn(table, SWT.NONE);
 			tableColumn_3.setWidth(100);
-			tableColumn_3.setText("Password");
+			tableColumn_3.setText("Kata Kunci");
 			tableColumn_3.addSelectionListener(new TableColumnSelectionAdaptor(tableViewer, 4));
 		}
 
@@ -368,26 +368,26 @@ public class PasswordSafeJFace extends ApplicationWindow {
 		treeViewer.setInput(new Object());
 
         final TreeColumn treeColumn = new TreeColumn(tree, SWT.CENTER);
-        treeColumn.setText("Title");
+        treeColumn.setText("Judul");
         treeColumn.setWidth(100);
         WidgetPreferences.tuneTreeColumn(treeColumn, getClass(), "tree/title");
 //        treeColumn.addSelectionListener(new TreeColumnSelectionAdaptor(treeViewer, 1));
 
         final TreeColumn treeColumn_1 = new TreeColumn(tree, SWT.LEFT);
-        treeColumn_1.setText("User Name");
+        treeColumn_1.setText("Nama Pengguna");
         treeColumn_1.setWidth(100);
         WidgetPreferences.tuneTreeColumn(treeColumn_1, getClass(), "tree/userName");
 //        treeColumn_1.addSelectionListener(new TreeColumnSelectionAdaptor(treeViewer, 2));
 
         final TreeColumn treeColumn_2 = new TreeColumn(tree, SWT.LEFT);
-        treeColumn_2.setText("Notes");
+        treeColumn_2.setText("Catatan");
         treeColumn_2.setWidth(100);
         WidgetPreferences.tuneTreeColumn(treeColumn_2, getClass(), "tree/notes");
 //        treeColumn_2.addSelectionListener(new TreeColumnSelectionAdaptor(treeViewer, 3));
 
         if (UserPreferences.getInstance().getBoolean(DisplayPreferences.SHOW_PASSWORD_IN_LIST)) {
         	final TreeColumn treeColumn_3 = new TreeColumn(tree, SWT.LEFT);
-            treeColumn_3.setText("Password");
+            treeColumn_3.setText("Kata Kunci");
             treeColumn_3.setWidth(100);
             WidgetPreferences.tuneTreeColumn(treeColumn_3, getClass(), "tree/password");
 //            treeColumn_3.addSelectionListener(new TreeColumnSelectionAdaptor(treeViewer, 4));
@@ -831,7 +831,7 @@ public class PasswordSafeJFace extends ApplicationWindow {
             MessageBox messageBox = new MessageBox(getShell(), style);
             messageBox.setText("Save Changes");
             messageBox
-                    .setMessage("Do you want to save changes to the password list?");
+                    .setMessage("Apakah anda ingin menyimpan perubahan pada daftar kata kunci?");
             int result = messageBox.open();
             if (result == SWT.YES) {
                 try {

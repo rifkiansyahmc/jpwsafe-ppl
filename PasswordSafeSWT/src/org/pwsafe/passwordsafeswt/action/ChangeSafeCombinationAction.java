@@ -19,7 +19,7 @@ import org.pwsafe.passwordsafeswt.dialog.PasswordDialog;
 public class ChangeSafeCombinationAction extends Action {
 
     public ChangeSafeCombinationAction() {
-        super("Change Safe Combination");
+        super("Ganti Kombinasi Brankas");
     }
 
     /**

@@ -23,7 +23,7 @@ import org.pwsafe.passwordsafeswt.PasswordSafeJFace;
 public class SaveFileAsAction extends Action {
 
     public SaveFileAsAction() {
-        super("Save &As");
+        super("Simpan &Sebagai");
     }
 
     /**

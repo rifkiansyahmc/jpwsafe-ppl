@@ -23,10 +23,10 @@ import org.pwsafe.passwordsafeswt.PasswordSafeJFace;
 public class ClearClipboardAction extends Action {
 
     public ClearClipboardAction() {
-        super("Clear Clipboard");
+        super("Bersihkan Clipboard");
         setAccelerator( SWT.MOD1 | SWT.DEL  );
         setImageDescriptor(ImageDescriptor.createFromURL(this.getClass().getClassLoader().getResource("org/pwsafe/passwordsafeswt/images/tool_newbar_clearclip.gif")));
-        setToolTipText("Clear Clipboard");
+        setToolTipText("Bersihkan Clipboard");
 
     }
 

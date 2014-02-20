@@ -18,7 +18,7 @@ import org.pwsafe.passwordsafeswt.PasswordSafeJFace;
 public class ViewAsListAction extends Action {
 
     public ViewAsListAction() {
-        super("List", AS_RADIO_BUTTON);
+        super("Daftar", AS_RADIO_BUTTON);
         setChecked(true); // default radio
     }
 

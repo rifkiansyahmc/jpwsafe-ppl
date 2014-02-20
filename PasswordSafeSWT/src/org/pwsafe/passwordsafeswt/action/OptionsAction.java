@@ -32,7 +32,7 @@ import com.swtdesigner.SWTResourceManager;
 public class OptionsAction extends Action {
 
     public OptionsAction() {
-        super("Options...");
+        super("Pengaturan...");
     }
 
     /**

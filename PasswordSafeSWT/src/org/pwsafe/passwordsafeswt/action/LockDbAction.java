@@ -26,8 +26,8 @@ public class LockDbAction extends Action {
 	private static final Log log = LogFactory.getLog(LockDbAction.class);
 
     public LockDbAction() {
-        super("Lock Database");
-        setToolTipText("Lock Database");
+        super("Kunci Database");
+        setToolTipText("Kunci Database");
     }
 
     /**

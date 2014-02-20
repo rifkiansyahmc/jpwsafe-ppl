@@ -22,7 +22,7 @@ import org.pwsafe.passwordsafeswt.PasswordSafeJFace;
 public class VisitPasswordSafeWebsiteAction extends Action {
 
     public VisitPasswordSafeWebsiteAction() {
-        super("Visit Password Safe website");
+        super("Kunjungi Website Password Safe");
     }
 
     /**

@@ -27,7 +27,7 @@ public class CopyPasswordAction extends Action {
         super("Copy Password@Ctrl+C");
         setAccelerator( SWT.MOD1 | 'C'  );
         setImageDescriptor(ImageDescriptor.createFromURL(this.getClass().getClassLoader().getResource("org/pwsafe/passwordsafeswt/images/tool_newbar_pwd.gif")));
-        setToolTipText("Copy Password To Clipboard");
+        setToolTipText("Copy Kata Kunci kedalam Clipboard");
 
     }
 

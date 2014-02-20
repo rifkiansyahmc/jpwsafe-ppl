@@ -26,7 +26,7 @@ public class EditRecordAction extends Action {
         super("&Edit Record");
         setAccelerator( SWT.MOD1 | Character.LINE_SEPARATOR  );
         setImageDescriptor(ImageDescriptor.createFromURL(this.getClass().getClassLoader().getResource("org/pwsafe/passwordsafeswt/images/tool_newbar_edit.gif")));
-        setToolTipText("Edit Selected Record");
+        setToolTipText("Ubah Catatan Dipilih");
     }
 
     /**

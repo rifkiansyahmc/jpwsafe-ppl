@@ -21,10 +21,10 @@ import org.pwsafe.passwordsafeswt.dialog.NewSafeDialog;
 public class NewFileAction extends Action {
 
     public NewFileAction() {
-        super("&New File");
+        super("&File Baru");
         setAccelerator( SWT.MOD1 | 'N'  );
         setImageDescriptor(ImageDescriptor.createFromURL(this.getClass().getClassLoader().getResource("org/pwsafe/passwordsafeswt/images/tool_newbar_new.gif")));
-        setToolTipText("Create New Safe");
+        setToolTipText("Buat Brankas Baru");
     }
 
     /**

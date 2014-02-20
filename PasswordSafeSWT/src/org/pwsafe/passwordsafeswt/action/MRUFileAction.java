@@ -38,8 +38,8 @@ public class MRUFileAction extends Action {
         if (app.isDirty()) {
             int style = SWT.APPLICATION_MODAL | SWT.YES | SWT.NO | SWT.CANCEL;
             MessageBox messageBox = new MessageBox(app.getShell(), style);
-            messageBox.setText("Save Changes");
-            messageBox.setMessage("Do you want to save changes to the password list?");
+            messageBox.setText("Simpan Perubahan");
+            messageBox.setMessage("Apakah anda ingin menyimpan perubahan kedalam daftar kata kunci?");
             int result = messageBox.open();
             if (result == SWT.YES) {
                 try {

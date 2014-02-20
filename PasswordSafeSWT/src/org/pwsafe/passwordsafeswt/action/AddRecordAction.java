@@ -27,7 +27,7 @@ public class AddRecordAction extends Action {
         super("&Add Record");
         setAccelerator( SWT.MOD1 | 'A' );
         setImageDescriptor(ImageDescriptor.createFromURL(this.getClass().getClassLoader().getResource("org/pwsafe/passwordsafeswt/images/tool_newbar_add.gif")));
-        setToolTipText("Add New Record");
+        setToolTipText("Tambahkan Catatan Baru");
     }
 
     /**

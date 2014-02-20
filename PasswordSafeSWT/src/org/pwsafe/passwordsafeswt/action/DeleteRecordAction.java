@@ -25,7 +25,7 @@ public class DeleteRecordAction extends Action {
     public DeleteRecordAction() {
         super("&Delete Record@Del");
         setImageDescriptor(ImageDescriptor.createFromURL(this.getClass().getClassLoader().getResource("org/pwsafe/passwordsafeswt/images/tool_newbar_delete.gif")));
-        setToolTipText("Delete Selected Record");
+        setToolTipText("Hapus Catatan Dipilih");
     }
 
     /**

@@ -23,10 +23,10 @@ import org.pwsafe.passwordsafeswt.PasswordSafeJFace;
 public class SaveFileAction extends Action {
 
     public SaveFileAction() {
-        super("&Save");
+        super("&Simpan");
         setAccelerator( SWT.MOD1 | 'S'  );
         setImageDescriptor(ImageDescriptor.createFromURL(this.getClass().getClassLoader().getResource("org/pwsafe/passwordsafeswt/images/tool_newbar_save.gif")));
-        setToolTipText("Save");
+        setToolTipText("Simpan");
     }
 
     /**

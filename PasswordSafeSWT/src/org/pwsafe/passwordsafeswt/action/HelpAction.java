@@ -19,9 +19,9 @@ import org.pwsafe.passwordsafeswt.PasswordSafeJFace;
 public class HelpAction extends Action {
 
     public HelpAction() {
-        super("Get Help@F1");
+        super("Dapatkan Bantuan@F1");
         setImageDescriptor(ImageDescriptor.createFromURL(this.getClass().getClassLoader().getResource("org/pwsafe/passwordsafeswt/images/tool_newbar_help.gif")));
-        setToolTipText("Help");
+        setToolTipText("Bantuan");
     }
 
     /**
