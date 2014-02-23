@@ -1,3 +1,9 @@
+package org.pwsafe.passwordsafeswt.dialog;
+
+import org.eclipse.swt.widgets.Dialog;
+import org.eclipse.swt.widgets.Display;
+import org.eclipse.swt.widgets.Shell;
+
 /*
  * Copyright (c) 2008 David Muller <roxon@users.sourceforge.net>.
  * All rights reserved. Use of the code is allowed under the
@@ -5,7 +11,6 @@
  * distributed with this code, or available from
  * http://www.opensource.org/licenses/artistic-license-2.0.php
  */
-package org.pwsafe.passwordsafeswt.dialog;
 
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.events.SelectionAdapter;
@@ -24,6 +29,7 @@ import org.pwsafe.passwordsafeswt.util.ShellHelpers;
 import org.pwsafe.passwordsafeswt.util.VersionInfo;
 
 import com.swtdesigner.SWTResourceManager;
+import com.virtual.keyboard.start_vk;
 
 /**
  * StartupDialog is shown when the app starts up and is modal in front on the main window.
@@ -45,6 +51,7 @@ public class StartupDialog extends Dialog {
 	public static final String OPEN_OTHER = "buka-lain"; // open file dialog for other file
 	public static final String NEW_FILE = "baru";    // create a new safe
 	public static final String CANCEL = "batalkan";   // exit the app
+	private Button btnReadOnly;
 	
 	public StartupDialog(Shell parent, int style) {
 		super(parent, style);
@@ -59,6 +66,20 @@ public class StartupDialog extends Dialog {
 	    result = StartupDialog.CANCEL;
 		createContents();
 		ShellHelpers.centreShell(getParent(), shell);
+		
+		Button btnVirtualKeyboard = new Button(shell, SWT.NONE);
+		btnVirtualKeyboard.addSelectionListener(new SelectionAdapter() {
+			@Override
+			public void widgetSelected(SelectionEvent e) {
+				start_vk vk = new start_vk();
+				vk.showVK(btnVirtualKeyboard, txtPassword);
+			}
+		});
+		FormData fd_btnVirtualKeyboard = new FormData();
+		fd_btnVirtualKeyboard.bottom = new FormAttachment(btnReadOnly, 0, SWT.BOTTOM);
+		fd_btnVirtualKeyboard.right = new FormAttachment(cboFilename, 0, SWT.RIGHT);
+		btnVirtualKeyboard.setLayoutData(fd_btnVirtualKeyboard);
+		btnVirtualKeyboard.setText("Virtual Keyboard");
 		shell.open();
 		shell.layout();
 		if (mruList != null) {
@@ -130,11 +151,11 @@ public class StartupDialog extends Dialog {
         formData_3.right = new FormAttachment(cboFilename, 0, SWT.RIGHT);
 		txtPassword.setLayoutData(formData_3);
 
-		final Button btnReadOnly = new Button(shell, SWT.CHECK);
-		final FormData formData_4 = new FormData();
-		formData_4.top = new FormAttachment(txtPassword, 15);
-		formData_4.left = new FormAttachment(txtPassword, 0, SWT.LEFT);
-		btnReadOnly.setLayoutData(formData_4);
+		btnReadOnly = new Button(shell, SWT.CHECK);
+		final FormData fd_btnReadOnly = new FormData();
+		fd_btnReadOnly.top = new FormAttachment(txtPassword, 15);
+		fd_btnReadOnly.left = new FormAttachment(txtPassword, 0, SWT.LEFT);
+		btnReadOnly.setLayoutData(fd_btnReadOnly);
 		btnReadOnly.setText("Buka sebagai &read-only");
 
 		final Button btnCreate = new Button(shell, SWT.NONE);

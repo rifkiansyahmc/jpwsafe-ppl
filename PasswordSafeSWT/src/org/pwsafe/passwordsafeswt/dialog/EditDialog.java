@@ -1,3 +1,9 @@
+package org.pwsafe.passwordsafeswt.dialog;
+
+import org.eclipse.swt.widgets.Dialog;
+import org.eclipse.swt.widgets.Display;
+import org.eclipse.swt.widgets.Shell;
+
 /*
  * Copyright (c) 2008 David Muller <roxon@users.sourceforge.net>.
  * All rights reserved. Use of the code is allowed under the
@@ -5,7 +11,7 @@
  * distributed with this code, or available from
  * http://www.opensource.org/licenses/artistic-license-2.0.php
  */
-package org.pwsafe.passwordsafeswt.dialog;
+
 
 import java.text.DateFormat;
 import java.text.ParseException;
@@ -44,6 +50,8 @@ import org.pwsafe.passwordsafeswt.preference.PasswordPolicyPreferences;
 import org.pwsafe.passwordsafeswt.util.ShellHelpers;
 import org.pwsafe.passwordsafeswt.util.UserPreferences;
 
+import com.virtual.keyboard.start_vk;
+
 /**
  * The Dialog that allows a user to edit password entries.
  *
@@ -70,7 +78,13 @@ public class EditDialog extends Dialog {
 	protected Object result;
 	protected Shell shell;
     private PwsEntryDTO entryToEdit;
+    private FormData formDataTemp_1;
+    private FormData fd_txtPasswordExpire;
+    private FormData formDataTemp_2;
     
+	/**
+	 * @wbp.parser.constructor
+	 */
 	public EditDialog(Shell parent, int style, PwsEntryDTO entryToEdit) {
 		super(parent, style);
         this.entryToEdit = entryToEdit;
@@ -148,7 +162,7 @@ public class EditDialog extends Dialog {
 		gridData_1.widthHint = 550;
 
 		labelInfo.setLayoutData(gridData_1);
-		labelInfo.setText("To edit this entry from the current password file, simply make the desired changes in the fields below. Note that at least a title and a password are still required.");
+		labelInfo.setText("Untuk mengedit form entri file password ini, cukup aplikasikan perubahan yang diinginkan pada field di bawah ini. Perlu diperhatikan bahwa paling tidak judul dan kata kunci masih dibutuhkan.");
 
 		final Composite compositeFields = new Composite(shell, SWT.NONE);
 		compositeFields.setLayout(new FormLayout());
@@ -175,7 +189,7 @@ public class EditDialog extends Dialog {
 
 		final Label lblTitle = new Label(compositeFields, SWT.NONE);
 		final FormData formData_2 = new FormData();
-		formData_2.top = new FormAttachment(txtGroup, 10, SWT.BOTTOM);
+		formData_2.top = new FormAttachment(lblGroup, 16);
 		formData_2.left = new FormAttachment(lblGroup, 0, SWT.LEFT);
 		lblTitle.setLayoutData(formData_2);
 		lblTitle.setText("Judul:");
@@ -192,10 +206,10 @@ public class EditDialog extends Dialog {
 
 		final Label lblUsername = new Label(compositeFields, SWT.NONE);
 		final FormData formData_4 = new FormData();
-		formData_4.top = new FormAttachment(txtTitle, 10, SWT.BOTTOM);
-		formData_4.left = new FormAttachment(lblTitle, 0, SWT.LEFT);
+		formData_4.top = new FormAttachment(lblTitle, 6);
+		formData_4.left = new FormAttachment(lblGroup, 0, SWT.LEFT);
 		lblUsername.setLayoutData(formData_4);
-		lblUsername.setText("Nama Pengguna:");
+		lblUsername.setText("Nama\r\nPengguna:");
 
 		txtUsername = new Text(compositeFields, SWT.BORDER);
 		final FormData formData_5 = new FormData();
@@ -209,12 +223,12 @@ public class EditDialog extends Dialog {
 
 		final Label lblPassword = new Label(compositeFields, SWT.NONE);
 		final FormData formData_6 = new FormData();
-		formData_6.top = new FormAttachment(txtUsername, 10, SWT.BOTTOM);
-		formData_6.left = new FormAttachment(lblUsername, 0, SWT.LEFT);
+		formData_6.left = new FormAttachment(lblGroup, 0, SWT.LEFT);
 		lblPassword.setLayoutData(formData_6);
 		lblPassword.setText("Kata Kunci:");
 
 		txtPassword = new Text(compositeFields, SWT.BORDER);
+		formData_6.top = new FormAttachment(txtPassword, 3, SWT.TOP);
 		final FormData formData_7 = new FormData();
 		formData_7.top = new FormAttachment(txtUsername, 10, SWT.BOTTOM);
 		formData_7.left = new FormAttachment(txtUsername, 0, SWT.LEFT);
@@ -253,15 +267,15 @@ public class EditDialog extends Dialog {
 		
 		final Label lblNotes = new Label(compositeFields, SWT.NONE);
 		final FormData formData_9 = new FormData();
-		formData_9.top = new FormAttachment(txtPassword, 5, SWT.BOTTOM);
-		formData_9.left = new FormAttachment(lblPassword, 0, SWT.LEFT);
+		formData_9.left = new FormAttachment(lblGroup, 0, SWT.LEFT);
 		lblNotes.setLayoutData(formData_9);
 		lblNotes.setText("Catatan:");
 
 		txtNotes = new Text(compositeFields, SWT.V_SCROLL | SWT.MULTI | SWT.BORDER | SWT.WRAP);
+		formData_9.top = new FormAttachment(txtNotes, 3, SWT.TOP);
 		final FormData formData_10 = new FormData(SWT.DEFAULT, 100);
+		formData_10.top = new FormAttachment(txtPassword, 37);
 		formData_10.bottom = new FormAttachment(100, -112);
-		formData_10.top = new FormAttachment(txtPassword, 5, SWT.BOTTOM);
 		formData_10.right = new FormAttachment(btnShowPassword, 0, SWT.RIGHT);
 		formData_10.left = new FormAttachment(txtPassword, 0, SWT.LEFT);
 
@@ -273,26 +287,26 @@ public class EditDialog extends Dialog {
         // New fields for V3 Files
 		final Label lblUrl = new Label(compositeFields, SWT.NONE);
 		FormData formDataTemp = new FormData();
-		formDataTemp.top = new FormAttachment(txtNotes, 10, SWT.BOTTOM);
-		formDataTemp.left = new FormAttachment(lblNotes, 0, SWT.LEFT);
+		formDataTemp.top = new FormAttachment(lblNotes, 81);
+		formDataTemp.left = new FormAttachment(0, 17);
 		lblUrl.setLayoutData(formDataTemp);
 		lblUrl.setText("URL:");
 
 		txtUrl = new Text(compositeFields, SWT.BORDER);
-		formDataTemp = new FormData();
-		formDataTemp.top = new FormAttachment(txtNotes, 10, SWT.BOTTOM);
-		formDataTemp.left = new FormAttachment(txtNotes, 0, SWT.LEFT);
-		formDataTemp.right = new FormAttachment(txtNotes, 0 , SWT.RIGHT);
-		txtUrl.setLayoutData(formDataTemp);
+		formDataTemp_2 = new FormData();
+		formDataTemp_2.top = new FormAttachment(txtNotes, 10);
+		formDataTemp_2.right = new FormAttachment(100, -177);
+		formDataTemp_2.left = new FormAttachment(lblUrl, 35);
+		txtUrl.setLayoutData(formDataTemp_2);
 		txtUrl.addKeyListener(dirtyKeypress);
         if (entryToEdit.getUrl() != null)
     		txtUrl.setText(entryToEdit.getUrl());
 
 		final Label lblAutotype = new Label(compositeFields, SWT.NONE);
-		formDataTemp = new FormData();
-		formDataTemp.top = new FormAttachment(txtUrl, 10, SWT.BOTTOM);
-		formDataTemp.left = new FormAttachment(lblUrl, 0, SWT.LEFT);
-		lblAutotype.setLayoutData(formDataTemp);
+		formDataTemp_1 = new FormData();
+		formDataTemp_1.top = new FormAttachment(lblUrl, 16);
+		formDataTemp_1.left = new FormAttachment(lblUrl, 0, SWT.LEFT);
+		lblAutotype.setLayoutData(formDataTemp_1);
 		lblAutotype.setText("Otoketik:");
 
 		txtAutotype = new Text(compositeFields, SWT.BORDER);
@@ -308,16 +322,15 @@ public class EditDialog extends Dialog {
 
 		final Label lblPasswordExpire = new Label(compositeFields, SWT.NONE);
 		final FormData fd_lblPasswordExpire = new FormData();
-		fd_lblPasswordExpire.top = new FormAttachment(txtAutotype, 10, SWT.BOTTOM);
+		fd_lblPasswordExpire.top = new FormAttachment(txtAutotype, 10);
 		fd_lblPasswordExpire.left = new FormAttachment(lblAutotype, 0, SWT.LEFT);
 		lblPasswordExpire.setLayoutData(fd_lblPasswordExpire);
 		lblPasswordExpire.setText("Tanggal Kata Kunci berakhir:");
 
 		txtPasswordExpire = new Text(compositeFields, SWT.BORDER);
-		final FormData fd_txtPasswordExpire = new FormData();
-		fd_txtPasswordExpire.left = new FormAttachment(lblPasswordExpire, 0, SWT.RIGHT);
-		fd_txtPasswordExpire.right = new FormAttachment(txtAutotype, 0, SWT.RIGHT);
-		fd_txtPasswordExpire.top = new FormAttachment(txtAutotype, 10, SWT.BOTTOM);
+		fd_txtPasswordExpire = new FormData();
+		fd_txtPasswordExpire.top = new FormAttachment(txtAutotype, 10);
+		fd_txtPasswordExpire.left = new FormAttachment(lblPasswordExpire);
 		txtPasswordExpire.setLayoutData(fd_txtPasswordExpire);
 		txtPasswordExpire.setText(format(entryToEdit.getExpires()));
 		txtPasswordExpire.addKeyListener(dirtyKeypress);
@@ -325,14 +338,30 @@ public class EditDialog extends Dialog {
         addDateChooser (compositeFields);
         
         shell.setDefaultButton(createButtons(compositeFields, btnShowPassword));
+        
+        Button btnVirtualKeyboard = new Button(compositeFields, SWT.NONE);
+        btnVirtualKeyboard.addSelectionListener(new SelectionAdapter() {
+        	@Override
+        	public void widgetSelected(SelectionEvent e) {
+        		start_vk vk = new start_vk();
+        		vk.showVK(btnVirtualKeyboard, txtPassword);
+        		setDirty(true);
+        	}
+        });
+        FormData fd_btnVirtualKeyboard = new FormData();
+        fd_btnVirtualKeyboard.top = new FormAttachment(lblPassword, 6);
+        fd_btnVirtualKeyboard.left = new FormAttachment(txtGroup, 0, SWT.LEFT);
+        btnVirtualKeyboard.setLayoutData(fd_btnVirtualKeyboard);
+        btnVirtualKeyboard.setText("Virtual Keyboard");
 
 		createTimesComposite(shell);
 	}
 	
 	private void addDateChooser(Composite compositeFields) {
 		Button open = new Button (compositeFields, SWT.PUSH);
+		fd_txtPasswordExpire.right = new FormAttachment(open, -10);
 		final FormData fd_dtPasswordExpire = new FormData();
-		fd_dtPasswordExpire.left = new FormAttachment(txtPasswordExpire, 10, SWT.RIGHT);
+		fd_dtPasswordExpire.left = new FormAttachment(0, 262);
 		fd_dtPasswordExpire.top = new FormAttachment(txtPasswordExpire, 0, SWT.TOP);
 		fd_dtPasswordExpire.bottom = new FormAttachment(txtPasswordExpire, 0, SWT.BOTTOM);
 		open.setLayoutData(fd_dtPasswordExpire);
@@ -413,7 +442,7 @@ public class EditDialog extends Dialog {
 			}
 		});
 		final FormData formData_11 = new FormData();
-		formData_11.top = new FormAttachment(txtGroup, 0, SWT.TOP);
+		formData_11.top = new FormAttachment(0, 10);
 		formData_11.left = new FormAttachment(100,-80);
 		formData_11.right = new FormAttachment(100, -10);
 		btnOk.setLayoutData(formData_11);
@@ -445,9 +474,9 @@ public class EditDialog extends Dialog {
 		group.setLayout(new GridLayout());
 		group.setText("Kata Kunci Acak");
 		final FormData formData_14 = new FormData();
+		formData_14.top = new FormAttachment(btnHelp, 13);
 //		formData_14.left = new FormAttachment(txtNotes, 10, SWT.RIGHT);
-		formData_14.left = new FormAttachment(100, -160);
-		formData_14.top = new FormAttachment(btnShowPassword, 5, SWT.TOP);
+		formData_14.left = new FormAttachment(100, -153);
 		formData_14.right = new FormAttachment(100, -5);
 		group.setLayoutData(formData_14);
 
@@ -476,9 +505,8 @@ public class EditDialog extends Dialog {
 		final GridData gridData = new GridData(GridData.HORIZONTAL_ALIGN_FILL);
 		final Composite timesGroup = new Composite(aShell, SWT.NONE);
 		timesGroup.setRedraw(true);
-		final GridData timesGridData = new GridData(SWT.FILL, SWT.CENTER, true, false);
 		gridData.widthHint = 550;
-		timesGroup.setLayoutData(timesGridData);
+		timesGroup.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, true, false));
 		final GridLayout gridLayout = new GridLayout();
 		gridLayout.numColumns = 8;
 		timesGroup.setLayout(gridLayout);

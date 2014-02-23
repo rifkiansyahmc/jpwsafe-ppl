@@ -1,3 +1,9 @@
+package org.pwsafe.passwordsafeswt.dialog;
+
+import org.eclipse.swt.widgets.Dialog;
+import org.eclipse.swt.widgets.Display;
+import org.eclipse.swt.widgets.Shell;
+
 /*
  * Copyright (c) 2008 David Muller <roxon@users.sourceforge.net>.
  * All rights reserved. Use of the code is allowed under the
@@ -5,7 +11,7 @@
  * distributed with this code, or available from
  * http://www.opensource.org/licenses/artistic-license-2.0.php
  */
-package org.pwsafe.passwordsafeswt.dialog;
+
 
 import java.io.File;
 
@@ -24,6 +30,7 @@ import org.eclipse.swt.widgets.Text;
 import org.pwsafe.passwordsafeswt.util.ShellHelpers;
 
 import com.swtdesigner.SWTResourceManager;
+import com.virtual.keyboard.start_vk;
 
 /**
  * PasswordDialog accepts password (and confirmation password) to either open a safe
@@ -94,6 +101,16 @@ public class PasswordDialog extends Dialog {
 		final Text txtCombination = new Text(composite_2, SWT.BORDER);
 		txtCombination.setEchoChar('*');
 		txtCombination.setLayoutData(new GridData(GridData.FILL_HORIZONTAL));
+		
+		Button btnVirtualKeyboard = new Button(composite, SWT.NONE);
+		btnVirtualKeyboard.addSelectionListener(new SelectionAdapter() {
+			@Override
+			public void widgetSelected(SelectionEvent e) {
+				start_vk vk = new start_vk();
+				vk.showVK(btnVirtualKeyboard, txtCombination);
+			}
+		});
+		btnVirtualKeyboard.setText("Virtual Keyboard");
 
 		final Composite composite_3 = new Composite(composite, SWT.NONE);
 		composite_3.setLayoutData(new GridData(GridData.HORIZONTAL_ALIGN_END));

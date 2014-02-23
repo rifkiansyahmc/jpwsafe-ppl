@@ -1,3 +1,9 @@
+package org.pwsafe.passwordsafeswt.dialog;
+
+import org.eclipse.swt.widgets.Dialog;
+import org.eclipse.swt.widgets.Display;
+import org.eclipse.swt.widgets.Shell;
+
 /*
  * Copyright (c) 2008 David Muller <roxon@users.sourceforge.net>.
  * All rights reserved. Use of the code is allowed under the
@@ -5,7 +11,6 @@
  * distributed with this code, or available from
  * http://www.opensource.org/licenses/artistic-license-2.0.php
  */
-package org.pwsafe.passwordsafeswt.dialog;
 
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.events.SelectionAdapter;
@@ -22,6 +27,8 @@ import org.eclipse.swt.widgets.Shell;
 import org.eclipse.swt.widgets.Text;
 import org.pwsafe.passwordsafeswt.util.ShellHelpers;
 
+import com.virtual.keyboard.start_vk;
+
 /**
  * Prompts the user for passwords for a new safe.
  *
@@ -33,6 +40,8 @@ public class NewSafeDialog extends Dialog {
 	private Text txtCombination;
 	protected Object result;
 	protected Shell shell;
+	private Label label;
+	private Label lblCombination;
 	public NewSafeDialog(Shell parent, int style) {
 		super(parent, style);
 	}
@@ -42,6 +51,34 @@ public class NewSafeDialog extends Dialog {
 	public Object open() {
 		createContents();
 		ShellHelpers.centreShell(getParent(), shell);
+		
+		Button btnVirtualKeyboard = new Button(shell, SWT.NONE);
+		btnVirtualKeyboard.addSelectionListener(new SelectionAdapter() {
+			@Override
+			public void widgetSelected(SelectionEvent e) {
+				start_vk vk1 = new start_vk();
+				vk1.showVK(btnVirtualKeyboard, txtCombination);
+			}
+		});
+		FormData fd_btnVirtualKeyboard = new FormData();
+		fd_btnVirtualKeyboard.top = new FormAttachment(lblCombination, -5, SWT.TOP);
+		fd_btnVirtualKeyboard.left = new FormAttachment(txtCombination, 6);
+		btnVirtualKeyboard.setLayoutData(fd_btnVirtualKeyboard);
+		btnVirtualKeyboard.setText("Virtual Keyboard");
+		
+		Button btnVirtualKeyboard_1 = new Button(shell, SWT.NONE);
+		btnVirtualKeyboard_1.addSelectionListener(new SelectionAdapter() {
+			@Override
+			public void widgetSelected(SelectionEvent e) {
+				start_vk vk2 = new start_vk();
+				vk2.showVK(btnVirtualKeyboard_1, txtVerify);
+			}
+		});
+		FormData fd_btnVirtualKeyboard_1 = new FormData();
+		fd_btnVirtualKeyboard_1.bottom = new FormAttachment(txtVerify, 0, SWT.BOTTOM);
+		fd_btnVirtualKeyboard_1.left = new FormAttachment(txtVerify, 6);
+		btnVirtualKeyboard_1.setLayoutData(fd_btnVirtualKeyboard_1);
+		btnVirtualKeyboard_1.setText("Virtual Keyboard");
 		//shell.pack();
 		shell.open();
 		shell.layout();
@@ -57,26 +94,25 @@ public class NewSafeDialog extends Dialog {
 		shell.setLayout(new FormLayout());
 		shell.setSize(380, 250);
 		shell.setText("Membuat Kombinasi Brankas");
-		final Label label = new Label(shell, SWT.WRAP);
-		final FormData formData = new FormData();
-		formData.top = new FormAttachment(0, 5);
-		formData.right = new FormAttachment(100, -5);
-		formData.left = new FormAttachment(0, 5);
-		label.setLayoutData(formData);
+		label = new Label(shell, SWT.WRAP);
+		final FormData fd_label = new FormData();
+		fd_label.top = new FormAttachment(0, 5);
+		fd_label.right = new FormAttachment(100, -5);
+		fd_label.left = new FormAttachment(0, 5);
+		label.setLayoutData(fd_label);
 		label.setText("Sebuah database password baru akan dibuat. Kombinasi yang anda masukkan akan digunakan untuk mengenkripsi file database kata kunci. Kombinasi brankas dapat menggunakan kunci apapun di keyboard dan case sensitive.");
 
-		final Label lblCombination = new Label(shell, SWT.NONE);
-		final FormData formData_1 = new FormData();
-		formData_1.top = new FormAttachment(label, 30, SWT.BOTTOM);
-		formData_1.left = new FormAttachment(10, 0);
-		lblCombination.setLayoutData(formData_1);
+		lblCombination = new Label(shell, SWT.NONE);
+		final FormData fd_lblCombination = new FormData();
+		fd_lblCombination.top = new FormAttachment(label, 33);
+		fd_lblCombination.left = new FormAttachment(label, 0, SWT.LEFT);
+		lblCombination.setLayoutData(fd_lblCombination);
 		lblCombination.setText("Kombinasi Brankas:");
 
 		txtCombination = new Text(shell, SWT.PASSWORD | SWT.BORDER);
 		final FormData formData_2 = new FormData();
-		formData_2.top = new FormAttachment(lblCombination, 0, SWT.TOP);
-		formData_2.left = new FormAttachment(lblCombination, 5);
-		formData_2.right = new FormAttachment(85, 0);
+		formData_2.left = new FormAttachment(lblCombination, 6);
+		formData_2.right = new FormAttachment(100, -109);
 		txtCombination.setLayoutData(formData_2);
 
 		final Label lblVerify = new Label(shell, SWT.NONE);
@@ -87,10 +123,11 @@ public class NewSafeDialog extends Dialog {
 		lblVerify.setText("Verifikasi:");
 
 		txtVerify = new Text(shell, SWT.PASSWORD | SWT.BORDER);
+		formData_2.bottom = new FormAttachment(100, -105);
 		final FormData formData_4 = new FormData();
-		formData_4.top = new FormAttachment(lblVerify, 0, SWT.TOP);
-		formData_4.left = new FormAttachment(txtCombination, 0, SWT.LEFT);
-		formData_4.right = new FormAttachment(txtCombination, 0, SWT.RIGHT);
+		formData_4.top = new FormAttachment(txtCombination, 14);
+		formData_4.left = new FormAttachment(lblVerify, 6);
+		formData_4.right = new FormAttachment(100, -109);
 		txtVerify.setLayoutData(formData_4);
 
 		final Button btnCancel = new Button(shell, SWT.NONE);

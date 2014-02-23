@@ -1,3 +1,9 @@
+package org.pwsafe.passwordsafeswt.dialog;
+
+import org.eclipse.swt.widgets.Dialog;
+import org.eclipse.swt.widgets.Display;
+import org.eclipse.swt.widgets.Shell;
+
 /*
  * $Id$
  * 
@@ -7,7 +13,6 @@
  * distributed with this code, or available from
  * http://www.opensource.org/licenses/artistic-license-2.0.php
  */
-package org.pwsafe.passwordsafeswt.dialog;
 
 import java.util.Calendar;
 import java.util.Date;
